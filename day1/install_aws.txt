@@ -1,0 +1,79 @@
+
+---
+
+# Install Terraform on Ubuntu (AWS EC2)
+
+## Step 1: Launch an Ubuntu Instance on AWS
+
+* Launch an **Ubuntu EC2 instance**
+* Ensure **port 22 (SSH)** is open in the security group
+
+---
+
+## Step 2: Connect to Your Server
+
+```bash
+ssh -i <your-key.pem> ubuntu@<public-ip>
+```
+
+---
+
+## Step 3: Visit Terraform Installation Page
+
+* Open the official HashiCorp Terraform install guide:
+  [https://developer.hashicorp.com/terraform/install]
+
+---
+
+## Step 4: Install Terraform Using APT Repository
+
+Run the following commands **one by one**:
+
+### Update Package Index
+
+```bash
+sudo apt update
+```
+
+### Add HashiCorp GPG Key
+
+```bash
+wget -O - https://apt.releases.hashicorp.com/gpg | \
+sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
+```
+
+### Add HashiCorp Repository
+
+```bash
+echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] \
+https://apt.releases.hashicorp.com $(grep -oP '(?<=UBUNTU_CODENAME=).*' /etc/os-release || lsb_release -cs) main" | \
+sudo tee /etc/apt/sources.list.d/hashicorp.list
+```
+
+### Install Terraform
+
+```bash
+sudo apt update && sudo apt install terraform -y
+```
+
+---
+
+## Step 5: Verify Installation
+
+```bash
+terraform --version
+```
+
+✅ If installed correctly, Terraform version details will be displayed.
+
+---
+
+## Summary
+
+* Ubuntu instance launched on AWS
+* Connected via SSH
+* HashiCorp APT repo added
+* Terraform installed and verified
+
+---
+

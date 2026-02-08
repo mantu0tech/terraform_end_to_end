@@ -1,0 +1,114 @@
+---
+
+# Terraform Basics
+
+## Terraform File Extension
+
+* The extension of Terraform file is **`.tf`**
+
+---
+
+## HCL (HashiCorp Configuration Language)
+
+Terraform uses **HCL (HashiCorp Configuration Language)**.
+
+### HCL Syntax
+
+```hcl
+block parameter {
+  arguments
+}
+```
+
+* **Block** can be anything like:
+
+  * `variable`
+  * `output`
+  * `provider`
+  * `resource`
+* **Parameter** can be:
+
+  * resources like `s3`
+  * `ec2`
+  * `vpc`
+
+---
+
+## Resource Block Syntax
+
+```hcl
+block resource_type parameter
+```
+
+### Example
+
+```hcl
+resource "aws_instance" "myinstance" {
+
+}
+```
+
+---
+
+## Terraform Providers
+
+Go to the below website to see all the providers:
+
+[https://registry.terraform.io/browse/providers](https://registry.terraform.io/browse/providers)
+
+---
+
+## Adding AWS Access Key for Terraform
+
+To apply changes using Terraform, AWS access is required.
+
+Terraform uses **AWS CLI credentials**.
+
+---
+
+## Install AWS CLI on Windows
+
+Run the below command to download and install AWS CLI:
+
+```bash
+msiexec.exe /i https://awscli.amazonaws.com/AWSCLIV2.msi
+```
+
+Documentation link:
+[https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html)
+
+---
+
+## Verify AWS CLI Installation
+
+```bash
+aws --version
+```
+
+---
+
+## Create AWS Access Key
+
+1. Go to **IAM**
+2. Create or select a **User**
+3. Create **Access Key** for that user
+
+---
+
+## Configure AWS CLI
+
+Run:
+
+```bash
+aws configure
+```
+
+Add your AWS keys here:
+
+* AWS Access Key ID
+* AWS Secret Access Key
+* Region
+* Output format
+
+---
+
