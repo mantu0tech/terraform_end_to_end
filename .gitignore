@@ -2,6 +2,7 @@
 **/.terraform/*
 .terraform/
 
+**/ssh*
 # Terraform state files
 *.tfstate
 *.tfstate.*
