@@ -1,0 +1,9 @@
+#!/bin/bash 
+
+sudo yum update 
+
+sudo yum install nginx -y 
+
+sudo systemctl start nginx 
+
+echo "<marquee><h1>this is my webpage</h1></marquee>" | sudo tee /var/www/html/index.html
