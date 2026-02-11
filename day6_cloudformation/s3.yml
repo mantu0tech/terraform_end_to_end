@@ -1,0 +1,7 @@
+Resources:
+  Bucket:
+    Type: AWS::S3::Bucket
+    Properties:
+      BucketName: !Sub ${AWS::StackName}-myawsbucket-${AWS::AccountId}
+      WebsiteConfiguration:
+        IndexDocument: index.html

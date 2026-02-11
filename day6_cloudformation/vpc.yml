@@ -1,0 +1,48 @@
+Resources:
+  myvpc:
+    Type: AWS::EC2::VPC
+    Properties:
+      CidrBlock: 10.0.0.0/16
+      EnableDnsSupport: true
+      EnableDnsHostnames: true
+      Tags:
+        - Key: stack
+          Value: production
+  publicsub:
+    Type: AWS::EC2::Subnet
+    Properties:
+      VpcId: !Ref myvpc
+      CidrBlock: 10.0.0.0/24
+      AvailabilityZone: us-east-1a
+      Tags:
+        - Key: stack
+          Value: production
+  VPCGatewayAttachment:
+    Type: AWS::EC2::VPCGatewayAttachment
+    Properties:
+      VpcId: !Ref myvpc
+      InternetGatewayId: !Ref myig
+  myig:
+    Type: AWS::EC2::InternetGateway
+    Properties:
+      Tags:
+        - Key: stack
+          Value: production
+  RouteTable:
+    Type: AWS::EC2::RouteTable
+    Properties:
+      VpcId: !Ref myvpc
+      Tags:
+        - Key: stack
+          Value: production
+  sub:
+    Type: AWS::EC2::SubnetRouteTableAssociation
+    Properties:
+      SubnetId: !Ref publicsub
+      RouteTableId: !Ref RouteTable
+  Route:
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref RouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      GatewayId: !Ref myig

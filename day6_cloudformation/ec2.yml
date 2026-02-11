@@ -1,0 +1,15 @@
+
+      ImageId: "ami-0c1fe732b5494dc14"
+      InstanceType: t2.micro
+      KeyName: "linux"
+      SecurityGroupIds:
+          - sg-0079fafcf94bbf6f2
+      BlockDeviceMappings: 
+      - DeviceName: "/dev/sdm"
+        Ebs: 
+          VolumeType: "gp3"
+          Iops: 3000
+          DeleteOnTermination: true
+          VolumeSize: 20
+      - DeviceName: "/dev/sdk"
+        NoDevice: {}
