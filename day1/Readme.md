@@ -1,5 +1,3 @@
----
-
 # Terraform – Overview & Basics
 
 ## What is Terraform?
